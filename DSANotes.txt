@@ -1,0 +1,4 @@
+Add sequence num	n * (n+1)/2
+find repeating	go for Set <>
+0s,1s,2s  --> 3 pointers
+to check two arr are equal use map<?,?>count

@@ -1,0 +1,16 @@
+Find repeating number in array
+
+import java.util.*;
+
+class Solution {
+    public int findDuplicate(int[] arr) {
+        Set<Integer> seen = new HashSet<>();
+        for (int num : arr) {
+            if (seen.contains(num)) {
+                return num;
+            }
+            seen.add(num);
+        }
+        return -1; // no duplicate found
+    }
+}
