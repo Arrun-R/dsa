@@ -1,0 +1,78 @@
+Count Inversions
+Difficulty: MediumAccuracy: 16.93%Submissions: 717K+Points: 4
+Given an array of integers arr[]. You have to find the Inversion Count of the array. 
+Note : Inversion count is the number of pairs of elements (i, j) such that i < j and arr[i] > arr[j].
+
+Examples:
+
+Input: arr[] = [2, 4, 1, 3, 5]
+Output: 3
+Explanation: The sequence 2, 4, 1, 3, 5 has three inversions (2, 1), (4, 1), (4, 3).
+Input: arr[] = [2, 3, 4, 5, 6]
+Output: 0
+Explanation: As the sequence is already sorted so there is no inversion count.
+Input: arr[] = [10, 10, 10]
+Output: 0
+Explanation: As all the elements of array are same, so there is no inversion count.
+Constraints:
+1 ≤ arr.size() ≤ 105
+1 ≤ arr[i] ≤ 104
+
+
+
+class Solution {
+    static int inversionCount(int arr[]) {
+        
+        return mergeSort(arr,0,arr.length-1);
+        
+    }
+    
+    static int mergeSort(int arr[],int low,int high){
+        int count = 0;
+        if(low>=high){
+            return count;
+        }
+        int mid = (low+high)/2;
+        
+        count+= mergeSort(arr,low,mid);
+        count+= mergeSort(arr,mid+1,high);
+        count+= mergerSortArray(arr,low,mid,high);
+        return count;
+    }
+    
+    static int mergerSortArray(int arr[],int low, int mid, int high){
+        
+        ArrayList<Integer> list = new ArrayList<>();
+        
+        int left = low;
+        int right = mid+1;
+        int count = 0;
+        
+        while(left<=mid && right<=high){
+            if(arr[left]<=arr[right]){
+                list.add(arr[left]);
+                left++;
+            }else{
+                list.add(arr[right]);
+                right++;
+                count += (mid-left+1);
+            }
+        }
+        
+        while(left<=mid){
+            list.add(arr[left]);
+                left++;
+        }
+        
+        while(right<=high){
+            list.add(arr[right]);
+                right++;
+        }
+        
+        for(int j=low;j<=high;j++){
+            arr[j] = list.get(j-low);
+        }
+        
+        return count;
+    }
+}
