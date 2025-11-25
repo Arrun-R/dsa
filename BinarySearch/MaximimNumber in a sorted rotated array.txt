@@ -1,0 +1,26 @@
+Maximim Number in a sorted rotated array
+Difficulty: EasyAccuracy: 43.12%Submissions: 90K+Points: 2Average Time: 30m
+Given an array of distinct elements which was initially sorted. This array may be rotated at some unknown point. The task is to find the minimum element in the given sorted and rotated array. 
+
+
+class Solution {
+    static int maxNumber(int arr[], int low, int high) {
+        // Your code here
+        while(low<=high){
+            int mid = low + (high-low)/2;
+            
+            if(arr[low]<arr[mid]){
+                low = mid;
+            } else if (arr[low]> arr[mid]){
+                high = mid - 1 ;
+            }else {
+                low++;
+            }
+            
+            
+        }
+        
+        return arr[high];
+        
+    }
+}
