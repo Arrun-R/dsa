@@ -1,0 +1,36 @@
+To create new pod using yaml:
+ ^ kubectl apply -f pod.yaml
+--------
+ ^ kubectl get pods
+ ^ kubectl describe pods <pod_name>
+ ^ kubectl delete pods <pod_name>
+ 
+ 
+ Replicaset:
+ ^ kubectl create -f replicaset-definition.yaml
+ ^ kubectl get replicaset
+ ^ kubectl delete replicaset myapp-replicaset
+ ^ kubectl replace -f replicaset-definition.yaml
+ ^ kubectl scale -replicas=6 -f replicaset-definition.yaml
+ 
+ Deployment:
+ >kubectl create -f deployment.yaml
+ >kubectl delete deployment myapp-deployment
+ 
+ >kubectl create -f deployment.yaml --record
+ >kubectl rollout status deployment/myapp-deployment
+ >kubectl rollout history deployment/myapp-deployment
+ >kubectl apply -f deployment.yaml
+ >kubectl set image deployment/myapp-deployment nginx=nginx:1.12-perl
+ >kubectl describe deployment
+ 
+ kubectl edit deployment frontend
+ 
+ 
+ Services:
+ >kubectl create -f service.yaml
+ >kubectl get services
+ 
+ 
+ 
+ 
